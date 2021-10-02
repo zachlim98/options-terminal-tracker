@@ -1,72 +1,153 @@
-import getpass
-
-from selenium import webdriver
-from rich.console import Console
+# app.py
+import rich.box
+from rich.panel import Panel
+from rich.style import Style
 from rich.table import Table
-from rich.progress import track
+from rich.text import Text
+from textual import events
+from textual.app import App
+from textual.reactive import Reactive
+from textual.widgets import Footer, Header, Static
 
-class Scraper:
+from textual_inputs import IntegerInput, TextInput
 
-    def __init__(self, driver_path=rf"/home/{getpass.getuser()}/Documents/", driver_type="Firefox"):
-        if driver_type=="Firefox":
-            self.webdriver = driver_path + "geckodriver"
-            op = webdriver.FirefoxOptions()
-            op.add_argument('--headless')
-            self.driver = webdriver.Firefox(executable_path=self.webdriver, options=op)
-        elif driver_type=="Chrome":
-            self.webdriver = driver_path + "chromedriver"
-            op = webdriver.ChromeOptions()
-            op.add_argument('--headless')
-            self.driver = webdriver.Chrome(executable_path=self.webdriver, options=op)
-        
-    def etf_scrape(self):
-        self.driver.get("https://www.barchart.com/options/iv-rank-percentile/etfs?orderBy=optionsImpliedVolatilityPercentile1y&orderDir=desc")
 
-        ticker_name = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[1]/div/span[2]/a").text for i in track(range(1,101), description="Downloading Ticker Name...")]
-        ticker_last = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[3]/div/span/span/span").text for i in track(range(1,101), description="Downloading Last Price...")]
-        ticker_optvol = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[6]/div/span/span/span").text for i in track(range(1,101), description="Downloading Option Vol...")]
-        ticker_impr = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[8]/div/span/span/span").text for i in track(range(1,101), description="Downloading IV Rank...")]
-        ticker_impp = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[9]/div/span/span/span").text for i in track(range(1,101), description="Downloading IV Percentile...")]
+class CustomHeader(Header):
+    """Override the default Header for Styling"""
 
-        return list(zip(ticker_name, ticker_last, ticker_optvol, ticker_impr, ticker_impp))
+    def __init__(self) -> None:
+        super().__init__()
+        self.tall = False
 
-class Renderer:
+    def render(self) -> Table:
+        header_table = Table.grid(padding=(0, 1), expand=True)
+        header_table.style = Style(color="white", bgcolor="rgb(98,98,98)")
+        header_table.add_column(justify="left", ratio=0, width=8)
+        header_table.add_column("title", justify="center", ratio=1)
+        header_table.add_column("clock", justify="right", width=8)
+        header_table.add_row(
+            "🔤", self.full_title, self.get_clock() if self.clock else ""
+        )
+        return header_table
 
-    def __init__(self):
-        self.console = Console()
-    
-    def last_color(self, text):
-        if float(text) < 30:
-            return f"[bright_green]{str(text)}[/]"
-        elif float(text) > 30 and float(text) < 50:
-            return f"[orange1]{str(text)}[/]"
-        else:
-            return f"[bright_red]{str(text)}[/]"
+    async def on_click(self, event: events.Click) -> None:
+        return await super().on_click(event)
 
-    def screener_table(self, data, table_type="ETF"):
-        table = Table(title=f"Screened {table_type}")
-        col_name = ["Ticker", "Last", "Volume", "IV Rank", "IV Perc"]
 
-        for i in range(0,5):
-            table.add_column(col_name[i])
+class CustomFooter(Footer):
+    """Override the default Footer for Styling"""
 
-        for i in range(0,11):
-            table.add_row(data[i][0], self.last_color(data[i][1]),data[i][2],data[i][3],data[i][4])
+    def make_key_text(self) -> Text:
+        """Create text containing all the keys."""
+        text = Text(
+            style="white on rgb(98,98,98)",
+            no_wrap=True,
+            overflow="ellipsis",
+            justify="left",
+            end="",
+        )
+        for binding in self.app.bindings.shown_keys:
+            key_display = (
+                binding.key.upper()
+                if binding.key_display is None
+                else binding.key_display
+            )
+            hovered = self.highlight_key == binding.key
+            key_text = Text.assemble(
+                (f" {key_display} ", "reverse" if hovered else "default on default"),
+                f" {binding.description} ",
+                meta={"@click": f"app.press('{binding.key}')", "key": binding.key},
+            )
+            text.append_text(key_text)
+        return text
 
-        self.console.print(table)
 
-def main():
-    # Create the root menu
-    console = Console()
-    main_loop = console.input("""Please choose [bold green]1[/] to screen or [bold green]2[/] to display the data or [bold red]q[/] to quit: """)
+class Demo(App):
 
-    while main_loop != "q":
-        if main_loop == "1":
-            console.print("Collecting [bold green]data[/] now...")
-            new_scrap = Scraper()
-            new_render = Renderer()
-            new_render.screener_table(new_scrap.etf_scrape())
-            main()
-    exit()
+    current_index: Reactive[int] = Reactive(-1)
 
-main()
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.tab_index = ["username", "password", "age"]
+
+    async def on_load(self) -> None:
+        await self.bind("q", "quit", "Quit")
+        await self.bind("enter", "submit", "Submit")
+        await self.bind("escape", "reset_focus", show=False)
+        await self.bind("ctrl+i", "next_tab_index", show=False)
+        await self.bind("shift+tab", "previous_tab_index", show=False)
+
+    async def on_mount(self) -> None:
+
+        self.header = CustomHeader()
+        await self.view.dock(self.header, edge="top")
+        await self.view.dock(CustomFooter(), edge="bottom")
+
+        self.username = TextInput(
+            name="username",
+            placeholder="enter your username...",
+            title="Username",
+        )
+        self.password = TextInput(
+            name="password",
+            title="Password",
+            password=True,
+        )
+        self.age = IntegerInput(
+            name="age",
+            placeholder="enter your age...",
+            title="Age",
+        )
+        self.output = Static(
+            renderable=Panel(
+                "",
+                title="Report",
+                border_style="blue",
+                box=rich.box.SQUARE
+            )
+        )
+
+        await self.view.dock(self.output, edge="left", size=40)
+        await self.view.dock(self.username, self.password, self.age, edge="top")
+
+    async def action_next_tab_index(self) -> None:
+        """Changes the focus to the next form field"""
+        if self.current_index < len(self.tab_index) - 1:
+            self.current_index += 1
+            await getattr(self, self.tab_index[self.current_index]).focus()
+
+    async def action_previous_tab_index(self) -> None:
+        """Changes the focus to the previous form field"""
+        self.log(f"PREVIOUS {self.current_index}")
+        if self.current_index > 0:
+            self.current_index -= 1
+            await getattr(self, self.tab_index[self.current_index]).focus()
+
+    async def action_submit(self) -> None:
+        formatted = f"""
+username: {self.username.value}
+password: {"".join("•" for _ in self.password.value)}
+     age: {self.age.value}
+        """
+        await self.output.update(
+            Panel(
+                formatted,
+                title="Report",
+                border_style="blue",
+                box=rich.box.SQUARE
+            )
+        )
+
+    async def action_reset_focus(self) -> None:
+        self.current_index = -1
+        await self.header.focus()
+
+    async def message_input_on_change(self, message) -> None:
+        self.log(f"Input: {message.sender.name} changed")
+
+    async def message_input_on_focus(self, message) -> None:
+        self.current_index = self.tab_index.index(message.sender.name)
+
+
+if __name__ == "__main__":
+    Demo.run(title="Textual-Inputs Demo", log="textual.log")
