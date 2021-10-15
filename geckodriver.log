@@ -3141,3 +3141,283 @@ Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1633332867387	geckodriver	INFO	Listening on 127.0.0.1:45061
+1633332868382	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "-no-remote" "-profile" "/tmp/rust_mozprofileaETHLu"
+*** You are running in headless mode.
+1633332869173	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileaETHLu/search.json.mozlz4", (void 0)))
+1633332871393	Marionette	INFO	Listening on port 46071
+1633332871475	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1633332875726	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 946 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2594 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 261 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2177 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://z.moatads.com/heinekensgdcmdisplay979010964956/moatad.js#moatClientLevel1=26357765&moatClientLevel2=6577034&moatClientLevel3=312748247&moatClientLevel4=156987161&zMoatG=ct=SG&st=&city=0&dma=0&zp=&bw=4&zMoatADV=9059113&zMoatENV=j, line 254: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1772 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 771 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 568 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1465 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1308 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 965 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1623 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6814 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6717 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 3437 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 5824 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2178 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: uncaught exception: 7
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1764 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 4452 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6655 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 630 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 7261 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 4426 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 3787 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 5976 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 7681 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2466 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6631 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 585 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 7565 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2650 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2701 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1877 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 5382 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 398 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2349 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: uncaught exception: 7
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6172 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 4559 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1633362239746	geckodriver	INFO	Listening on 127.0.0.1:39167
+1633362240750	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "-no-remote" "-profile" "/tmp/rust_mozprofiletPfzAC"
+*** You are running in headless mode.
+1633362241337	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofiletPfzAC/search.json.mozlz4", (void 0)))
+1633362243050	Marionette	INFO	Listening on port 46637
+1633362243085	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1633362248984	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 5692 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 3003 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 4616 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: https://d1l7hzv7igdihb.cloudfront.net/build/app.1d4ab68b3bc7b39a6938.js, line 14: TypeError: window.Headway is undefined
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1968 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1167 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 7013 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2903 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 5702 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 5224 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6537 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 3031 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 2177 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 451 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 5578 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: uncaught exception: 7
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 487 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6758 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 7156 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1525 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 3783 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 5539 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6555 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 1470 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/LftQ-87gh8ukbv8P1dh67h7Vjfro8G7aRn_R6x3uKA4.js line 1 > eval line 6230 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+1633362609503	Marionette	INFO	Stopped listening on port 46637
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+Exiting due to channel error.
+Exiting due to channel error.
+1634019615122	geckodriver	INFO	Listening on 127.0.0.1:52545
+1634019616119	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "-no-remote" "-profile" "/tmp/rust_mozprofileJHqKe7"
+*** You are running in headless mode.
+1634019616884	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileJHqKe7/search.json.mozlz4", (void 0)))
+1634019619515	Marionette	INFO	Listening on port 43881
+1634019619569	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1634019625657	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0J-uGr35fnBhcCBz1bhjI2ho5CXrt9wlcaTuMP0gbqs.js line 1 > eval line 4595 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0J-uGr35fnBhcCBz1bhjI2ho5CXrt9wlcaTuMP0gbqs.js line 1 > eval line 4213 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+1634019646654	geckodriver	INFO	Listening on 127.0.0.1:54343
+1634019647658	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "-no-remote" "-profile" "/tmp/rust_mozprofileb4F0O9"
+*** You are running in headless mode.
+1634019648095	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileb4F0O9/search.json.mozlz4", (void 0)))
+1634019650103	Marionette	INFO	Listening on port 38853
+1634019650189	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1634019654117	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0J-uGr35fnBhcCBz1bhjI2ho5CXrt9wlcaTuMP0gbqs.js line 1 > eval line 889 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0J-uGr35fnBhcCBz1bhjI2ho5CXrt9wlcaTuMP0gbqs.js line 1 > eval line 3585 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0J-uGr35fnBhcCBz1bhjI2ho5CXrt9wlcaTuMP0gbqs.js line 1 > eval line 240 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0J-uGr35fnBhcCBz1bhjI2ho5CXrt9wlcaTuMP0gbqs.js line 1 > eval line 7412 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/0J-uGr35fnBhcCBz1bhjI2ho5CXrt9wlcaTuMP0gbqs.js line 1 > eval line 3352 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+1634025051440	geckodriver	INFO	Listening on 127.0.0.1:46397
+1634025052436	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "-no-remote" "-profile" "/tmp/rust_mozprofilehg6Exf"
+*** You are running in headless mode.
+1634025053193	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilehg6Exf/search.json.mozlz4", (void 0)))
+1634025054369	Marionette	INFO	Listening on port 40943
+1634025054469	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1634025057708	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 2820 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 1508 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 7770 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 143 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 4243 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 7194 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 493 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://z.moatads.com/heinekensgdcmdisplay979010964956/moatad.js#moatClientLevel1=26357765&moatClientLevel2=6577034&moatClientLevel3=312809466&moatClientLevel4=156985937&zMoatG=ct=SG&st=&city=0&dma=0&zp=&bw=4&zMoatADV=9059113&zMoatENV=j, line 254: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 939 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 1129 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 1520 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 4841 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 1703 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 4880 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 3537 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 162 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 2659 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 6134 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 1559 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 4207 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/164xWCSuMRCufBnFuK3WuMS10bt2HArdrnuZlqXsEzU.js line 1 > eval line 2676 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+1634026372782	Marionette	INFO	Stopped listening on port 40943
+JavaScript error: resource:///modules/Interactions.jsm, line 201: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x390078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
