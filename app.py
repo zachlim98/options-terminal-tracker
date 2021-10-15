@@ -9,13 +9,17 @@ from rich import print
 from rich.align import Align
 from rich.console import Console, Group
 from rich.panel import Panel
+from rich.layout import Layout
 from rich.progress import track
 from rich.prompt import Prompt
 from rich.table import Table
 from rich.text import Text
 from textual import events
 from textual.app import App
+from textual.widget import Widget
 from textual.widgets import Footer, Header, Placeholder, Static
+
+from yahoo_fin import stock_info as si
 
 class Trade:
     """
@@ -271,12 +275,57 @@ class Prompts():
                 else:
                     account.close_trade(trdname, float(fieldValues[0]))
 
+class MyFooter(Footer):
+
+    def __init__(self) -> None:
+        super().__init__()
+
+    def make_key_text(self) -> Text:
+        """Create text containing all the keys."""
+        text = Text(
+            style="blue on white",
+            no_wrap=True,
+            overflow="ellipsis",
+            justify="left",
+            end="",
+        )
+        for binding in self.app.bindings.shown_keys:
+            key_display = (
+                binding.key.upper()
+                if binding.key_display is None
+                else binding.key_display
+            )
+            hovered = self.highlight_key == binding.key
+            key_text = Text.assemble(
+                (f" {key_display} ", "reverse" if hovered else "default on default"),
+                f" {binding.description} ",
+                meta={"@click": f"app.press('{binding.key}')", "key": binding.key},
+            )
+            text.append_text(key_text)
+        return text
+
+class Stock_Prices(Widget):
+    def on_mount(self):
+        self.set_interval(1, self.refresh)
+
+    def render(self):
+
+        SPY_data = "SPY: " + str(round(si.get_live_price("SPY"), 2))
+        layout = Layout()
+        layout.size = 10
+        layout.split_row(
+            Layout(name="left"),
+            Layout(Panel(Align.center(SPY_data, vertical="middle")), name="middle"),
+            Layout(name="right")
+        )
+        return layout
+
 class MyApp(App):
     """An example of a very simple Textual App"""
 
     async def on_load(self, event: events.Load) -> None:
         """Bind keys with the app loads (but before entering application mode)"""
-        await self.bind("b", "view.toggle('sidebar')", "Toggle sidebar")
+        await self.bind("b", "view.toggle('screener')", "Toggle screener")
         await self.bind("q", "quit", "Quit")
         await self.bind("i", "item", "New Trade")
         await self.bind("e", "edit", "Roll/Close Trade")
@@ -285,46 +334,44 @@ class MyApp(App):
     async def on_mount(self, event: events.Mount) -> None:
         """Create and dock the widgets."""
 
+        # Loads the account
         self.account = Prompts.on_load()
 
-        self.output = Static(
+        # Prepare the screener
+        self.screener = Static(
             renderable=Panel(
                 "",
-                title="Quick Report",
                 border_style="blue",
                 box=rich.box.SQUARE
             )
         )
+        self.screener.visible = False
 
+        # Prepare the trade report body
         new_render = Renderer()
-
-        self.report = Static(renderable=Panel(Align(
-            Group(
-                Text("Your trades here!"),
+        self.trades_table = Static(renderable=Panel(Align(
                 new_render.trades_table(self.account.render_table())
-            ), align="center", vertical="middle"
+            , align="center", vertical="middle"
         ), title="Full Report"))
 
-        # Header / footer / dock
-        await self.view.dock(Header(), edge="top")
-        await self.view.dock(Footer(), edge="bottom")
-        await self.view.dock(self.output, edge="left", size=30, name="sidebar")
+        # Header / footer / sidebar docking
+        await self.view.dock(Header(style="blue on white"), edge="top")
+        await self.view.dock(MyFooter(), edge="bottom")
+        await self.view.dock(self.screener, edge="left", size=60, name="screener")
 
-        # Dock the body in the remaining space
-        await self.view.dock(self.report, edge="right")
+        # Dock the remaining views in the remaining space
+        await self.view.dock(Stock_Prices(), self.trades_table,  edge="top")
 
     async def action_item(self) -> None:
 
         Prompts.open_trade(self.account)
 
         new_render = Renderer()
-
-        await self.report.update(
+        await self.trades_table.update(
                 Panel(
-                    Align(Group(
-                    Text("What's up fuckwards!"),
-                    new_render.trades_table(self.account.render_table())
-        ), align="center", vertical="middle"),
+                    Align(
+                    new_render.trades_table(self.account.render_table()),
+        align="center", vertical="middle"),
         title="Full Report", border_style="red"))
 
     async def action_edit(self) -> None:
@@ -332,13 +379,11 @@ class MyApp(App):
         Prompts.edit_trade(self.account)
 
         new_render = Renderer()
-
-        await self.report.update(
+        await self.trades_table.update(
                 Panel(
-                    Align(Group(
-                    Text("What's up fuckwards!\n\n"),
-                    new_render.trades_table(self.account.render_table())
-        ), align="center", vertical="middle"),
+                    Align(
+                    new_render.trades_table(self.account.render_table()),
+        align="center", vertical="middle"),
         title="Full Report", border_style="red"))
 
     async def action_save(self) -> None:
@@ -372,6 +417,6 @@ A [bold]W200[/] Project by [underline]Zachary[/]
 
 """, justify="center")
 
-time.sleep(3)
+#time.sleep(3)
 
 MyApp.run(title="OpShell v1.0", log="textual.log")
