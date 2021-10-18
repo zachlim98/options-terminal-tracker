@@ -1,27 +1,38 @@
-from rich.console import Console
-import time
+from rich.markdown import Markdown
 
-from rich.progress import SpinnerColumn, track
-from rich.align import Align
+from textual import events
+from textual.app import App
+from textual.widgets import Header, Footer, Placeholder, ScrollView
 
-# create new console object to pretty print
-console = Console()
 
-# print colored splashscreen
-console.print("""
+class MyApp(App):
+    """An example of a very simple Textual App"""
 
-  ______   .______   [red]  _______. __    __   _______  __       __      [/]
- /  __  \  |   _  \  [orange4] /       ||  |  |  | |   ____||  |     |  |     [/]
-|  |  |  | |  |_)  | [yellow]|   (----`|  |__|  | |  |__   |  |     |  |     [/]
-|  |  |  | |   ___/  [green] \   \    |   __   | |   __|  |  |     |  |     [/]
-    |  `--'  | |  |   [blue].----)   |   |  |  |  | |  |____ |  `----.|  `----.[/]
-     \______/  | _|   [violet]|_______/    |__|  |__| |_______||_______||_______|[/]
+    async def on_load(self, event: events.Load) -> None:
+        """Bind keys with the app loads (but before entering application mode)"""
+        await self.bind("b", "view.toggle('sidebar')", "Toggle sidebar")
+        await self.bind("q", "quit", "Quit")
 
-A [bold]W200[/] Project by [underline]Zachary[/]
+    async def on_mount(self, event: events.Mount) -> None:
+        """Create and dock the widgets."""
 
-""", justify="center")
+        # A scrollview to contain the markdown file
+        body = ScrollView(gutter=1)
 
-# some time to appreciate the splash screen
-for i in track(range(1,100)):
-    time.sleep(0.2)
-    pass
+        # Header / footer / dock
+        await self.view.dock(Header(), edge="top")
+        await self.view.dock(Footer(), edge="bottom")
+        await self.view.dock(body, edge="left", size=30, name="sidebar")
+
+        # Dock the body in the remaining space
+        await self.view.dock(Placeholder(), edge="right")
+
+        async def get_markdown(filename: str) -> None:
+            with open(filename, "rt") as fh:
+                readme = Markdown(fh.read(), hyperlinks=True)
+            await body.update(readme)
+
+        await self.call_later(get_markdown, "README.md")
+
+
+MyApp.run(title="Simple App", log="textual.log")

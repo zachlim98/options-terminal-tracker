@@ -1,25 +1,27 @@
 import datetime
+import getpass
 import os
 import pickle
 import time
+import warnings
 
 import easygui as g
 import rich.box
-from rich import print
 from rich.align import Align
 from rich.console import Console, Group
-from rich.panel import Panel
 from rich.layout import Layout
+from rich.markdown import Markdown
+from rich.panel import Panel
 from rich.progress import track
-from rich.prompt import Prompt
 from rich.table import Table
 from rich.text import Text
+from selenium import webdriver
 from textual import events
 from textual.app import App
 from textual.widget import Widget
-from textual.widgets import Footer, Header, Placeholder, Static
-
+from textual.widgets import Footer, Header, ScrollView, Static
 from yahoo_fin import stock_info as si
+
 
 class Trade:
     """
@@ -153,6 +155,31 @@ class Account:
 
         return account
 
+class Scraper:
+
+    def __init__(self, driver_path=rf"/home/{getpass.getuser()}/Documents/", driver_type="Firefox"):
+        if driver_type=="Firefox":
+            self.webdriver = driver_path + "geckodriver"
+            op = webdriver.FirefoxOptions()
+            op.add_argument('--headless')
+            self.driver = webdriver.Firefox(executable_path=self.webdriver, options=op)
+        elif driver_type=="Chrome":
+            self.webdriver = driver_path + "chromedriver"
+            op = webdriver.ChromeOptions()
+            op.add_argument('--headless')
+            self.driver = webdriver.Chrome(executable_path=self.webdriver, options=op)
+        
+    def etf_scrape(self):
+        self.driver.get("https://www.barchart.com/options/iv-rank-percentile/etfs?orderBy=optionsImpliedVolatilityPercentile1y&orderDir=desc")
+
+        ticker_name = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[1]/div/span[2]/a").text for i in track(range(1,101), description="Downloading Ticker Name...")]
+        ticker_last = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[3]/div/span/span/span").text for i in track(range(1,101), description="Downloading Last Price...")]
+        ticker_optvol = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[6]/div/span/span/span").text for i in track(range(1,101), description="Downloading Option Vol...")]
+        ticker_impr = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[8]/div/span/span/span").text for i in track(range(1,101), description="Downloading IV Rank...")]
+        ticker_impp = [self.driver.find_element_by_xpath(f"/html/body/main/div/div[2]/div[2]/div/div[2]/div/div/div/div[6]/div/div[2]/div/div/ng-transclude/table/tbody/tr[{i}]/td[9]/div/span/span/span").text for i in track(range(1,101), description="Downloading IV Percentile...")]
+
+        return list(zip(ticker_name, ticker_last, ticker_optvol, ticker_impr, ticker_impp))
+
 class Renderer:
     """
     Interface between screener and account objects and terminal GUI. Contains functions that allows for information 
@@ -219,7 +246,7 @@ class Renderer:
         Function that returns a table object from gainers and losers
         """
 
-        table = Table(title=f"Losers and Gainers")
+        table = Table(title="")
         col_name = ["Losers", "% Change", "Gainers", "% Change"]
 
         for i in range(len(col_name)):
@@ -230,7 +257,12 @@ class Renderer:
 
         return table
 
-class Prompts():
+    @staticmethod
+    def mkt_text_render(text):
+
+        return f"[chartreuse2]{text}[/]" if float(text.removesuffix("%")) > 0 else f"[deep_pink4]{text}[/]"
+
+class Prompts:
     """
     Umbrella class to hold easygui prompts
     """
@@ -249,7 +281,7 @@ class Prompts():
 
         else:
             account_info = g.multenterbox(msg="Please fill in the basic information for your account",
-            fields=["Deposit Amount", "Current Value"])
+            fields=["Deposit Amount", "Current Value"], values=["0.0", "0.0"])
             if account_info is None: # we NEED to load an account, so re-open the load function
                 return Prompts.on_load()
             else:
@@ -263,9 +295,16 @@ class Prompts():
         Function that provides the GUI for opening new trades in an account
         """
         fieldValues = g.multenterbox(msg="Enter trade information", title="Trade Information", 
-        fields=["Open Date", "Ticker", "Strike", "Trade Price", "Expiration Date"])
+        fields=["Open Date", "Ticker", "Strike", "Trade Price", "Expiration Date"], 
+        values=["DD Mmm YYYY", "", "0.0", "0.0", "DD Mmm YYYY"])
 
-        account.new_trade(fieldValues[0], fieldValues[1], float(fieldValues[2]), float(fieldValues[3]), fieldValues[4])
+        if fieldValues is None: # if the user clicks cancel, pass
+            pass
+        else:
+            try:
+                account.new_trade(fieldValues[0], fieldValues[1], float(fieldValues[2]), float(fieldValues[3]), fieldValues[4])
+            except:
+                g.msgbox("You entered invalid information. Please try again.")
 
     @staticmethod
     def edit_trade(account) -> None:
@@ -280,15 +319,18 @@ class Prompts():
             choiceValues = g.buttonbox(msg="Close or Roll Trade?", choices=["Close", "Roll"])
             if choiceValues == "Roll":
                 fieldValues = g.multenterbox(msg="Enter updated trade information", title="Trade Editor",
-                fields=["Roll Price", "Expiration Date", "Strike (Optional)"], values=[0,0,""])
+                fields=["Roll Price", "Expiration Date", "Strike (Optional)"], values=["0.0","DD Mmm YYY"])
                 if (fieldValues is None):
                     pass
                 else:
-                    account.roll_trade(trdname, float(fieldValues[0]), str(fieldValues[1]), 
-                    float(fieldValues[2]) if fieldValues[2] != "" else fieldValues[2])
+                    try:
+                        account.roll_trade(trdname, float(fieldValues[0]), str(fieldValues[1]), 
+                        float(fieldValues[2]) if fieldValues[2] != "" else fieldValues[2])
+                    except:
+                        g.msgbox("You entered invalid information. Please try again.")
             elif choiceValues == "Close":
                 fieldValues = g.multenterbox(msg="Enter closing trade information", title="Closing Trade",
-                fields=["Close Price"], values=[0])
+                fields=["Close Price"], values=["0.0"])
                 if (fieldValues is None):
                     pass
                 else:
@@ -327,13 +369,16 @@ class MyFooter(Footer):
 
 class Stock_Prices(Widget):
 
-    def __init__(self, data, name = None) -> None:
+    def __init__(self, data, account, name = None) -> None:
         super().__init__(name=name)
+        self.account = account
         self.tg = data[2].loc[0:4]
         self.tl = data[3].loc[0:4]
+        self.futs = data[0].loc[0:3]
+        self.status = data[1]
 
     def on_mount(self):
-        self.set_interval(60, self.refresh)        
+        self.set_interval(20, self.refresh)        
 
     def render(self):
         
@@ -342,11 +387,26 @@ class Stock_Prices(Widget):
         #prepare top gainers and losers for render
         data_tgtl = list(zip(self.tl.loc[:,"Symbol"], self.tl.loc[:, "% Change"], self.tg.loc[:,"Symbol"], self.tg.loc[:, "% Change"]))
 
+        mkt_formatted = f"""
+        [bold]Market[/]: [underline]{self.status}[/]
+        [blue3 bold]ES[/]: {self.futs.iloc[0,2]} (""" + new_render.mkt_text_render(self.futs.iloc[0,5]) + f""")
+        [orange4 bold]YM[/]: {self.futs.iloc[1,2]} (""" + new_render.mkt_text_render(self.futs.iloc[1,5]) + f""")
+        [hot_pink3 bold]NQ[/]: {self.futs.iloc[2,2]} (""" + new_render.mkt_text_render(self.futs.iloc[2,5]) + f""")
+        [gold3 bold]VXX[/]: {round(si.get_live_price("VXX"),2)}
+        """
+
+        acc_formatted = f"""
+        [bold]Total value[/]: {self.account.value}  
+        [bold]Deposit amt[/]: {self.account.base}
+        [bold]P&L[/]: """ + new_render.mkt_text_render(str(float(self.account.value) - float(self.account.base))) + f"""
+        [bold]P&L % [/]: """ + new_render.mkt_text_render(str(round((float(self.account.value) - float(self.account.base))/float(self.account.base) * 100, 2))) 
+
         layout = Layout()
         layout.split_row(
-            Layout(name="left"),
-            Layout(name="middle"),
-            Layout(Panel(Align.center(new_render.gain_loss_table(data_tgtl), vertical="middle")))
+            Layout(Panel(Align.center(mkt_formatted, vertical="middle"), title="Market update", border_style="red")),
+            Layout(Panel(Align.center(acc_formatted, vertical="middle"), border_style="yellow", title="My account")),
+            Layout(Panel(Align.center(new_render.gain_loss_table(data_tgtl), vertical="middle"), 
+            border_style="blue", title="Losers and Gainers"))
         )
         return layout
 
@@ -384,11 +444,13 @@ class MyApp(App):
             self.data_list.append(load_list[i]())
 
         """Bind keys with the app load"""
-        await self.bind("b", "view.toggle('screener')", "Toggle screener")
-        await self.bind("q", "quit", "Quit")
         await self.bind("i", "item", "New Trade")
         await self.bind("e", "edit", "Roll/Close Trade")
+        await self.bind("b", "view.toggle('screener')", "Screener")
+        await self.bind("r", "screener", "Run ETF Screener")
         await self.bind("s", "save", "Save Account")
+        await self.bind("q", "quit", "Quit")
+        await self.bind("h", "view.toggle('help')", "Help")
 
     async def on_mount(self, event: events.Mount) -> None:
         """Create and dock the widgets."""
@@ -406,6 +468,10 @@ class MyApp(App):
         )
         self.screener.visible = False
 
+        # Prepare the help screen
+        self.help = ScrollView(gutter=1)
+        self.help.visible = False
+
         # Prepare the trade report body
         new_render = Renderer()
         self.trades_table = Static(renderable=Panel(Align(
@@ -417,9 +483,17 @@ class MyApp(App):
         await self.view.dock(Header(style="blue on white"), edge="top")
         await self.view.dock(MyFooter(), edge="bottom")
         await self.view.dock(self.screener, edge="left", size=60, name="screener")
+        await self.view.dock(self.help, edge="bottom", name="help")
 
         # Dock the remaining views in the remaining space
-        await self.view.dock(Stock_Prices(self.data_list), self.trades_table,  edge="top")
+        await self.view.dock(Stock_Prices(self.data_list, self.account), self.trades_table,  edge="top")
+
+        async def get_markdown(filename: str) -> None:
+            with open(filename, "rt") as fh:
+                readme = Markdown(fh.read(), hyperlinks=True)
+            await self.help.update(readme)
+
+        await self.call_later(get_markdown, "README.md")
 
     async def action_item(self) -> None:
         """
@@ -468,8 +542,28 @@ class MyApp(App):
                 Account.save_acc(self.account, filename)
                 break
 
+    async def action_screener(self) -> None:
+        if g.ccbox("""
+        Scrapping will take approximately 10s. Please wait for it to complete.
+        Click continue to start screening.
+        """):
+            new_scrap = Scraper()
+            new_render = Renderer()
+            table_view = new_render.screener_table(new_scrap.etf_scrape())
+            await self.screener.update(Static(Panel(Align(table_view, align="center"), box=rich.box.SQUARE, title="Screener", border_style="red")))
+        else:
+            pass
 
-time.sleep(2)
+    async def action_help(self) -> None:
+        g.msgbox("""
+        Welcome to OpShell - the terminal options manager. There are 2 main
+        """)
 
+
+
+#set terminal size for optimal app display
+os.system('resize -s 35 150 >/dev/null')
+# to suppress known bug in Selenium when scrapping
+warnings.filterwarnings("ignore")
 # run the main app
 MyApp.run(title="OpShell v1.0", log="textual.log")

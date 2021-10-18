@@ -4,15 +4,60 @@ Load() >>> MyApp(title='Textual')
 Mount() >>> MyApp(title='OpShell v1.0')
 Mount() >>> DockView(name='DockView#1')
 Mount() >>> Header('')
+Mount() >>> ScrollView(name='ScrollView#1')
+Mount() >>> ScrollView(name='ScrollView#1')
 Mount() >>> Stock_Prices(name='Stock_Prices#1')
-Leave() >>> MyFooter(keys=[])
+Mount() >>> WindowView(name='WindowView#1')
+TRANSLATING layout
+view.forwarded Key(key='h')
+Key(key='h') >>> MyApp(title='OpShell v1.0')
+ACTION DockView(name='DockView#1') toggle
+WindowChange(WindowView(name='WindowView#1')) >>> ScrollView(name='ScrollView#1')
+WindowChange(WindowView(name='WindowView#1')) >>> ScrollView(name='ScrollView#1')
+WindowChange(WindowView(name='WindowView#1')) >>> ScrollView(name='ScrollView#1')
+view.forwarded Key(key='h')
+Key(key='h') >>> MyApp(title='OpShell v1.0')
+ACTION DockView(name='DockView#1') toggle
+view.forwarded Key(key='h')
+Key(key='h') >>> MyApp(title='OpShell v1.0')
+ACTION DockView(name='DockView#1') toggle
+WindowChange(WindowView(name='WindowView#1')) >>> ScrollView(name='ScrollView#1')
+WindowChange(WindowView(name='WindowView#1')) >>> ScrollView(name='ScrollView#1')
+view.forwarded Key(key='r')
+Key(key='r') >>> MyApp(title='OpShell v1.0')
+ACTION MyApp(title='OpShell v1.0') screener
+view.forwarded Key(key='h')
+Key(key='h') >>> MyApp(title='OpShell v1.0')
+ACTION DockView(name='DockView#1') toggle
+view.forwarded Key(key='b')
+Key(key='b') >>> MyApp(title='OpShell v1.0')
+ACTION DockView(name='DockView#1') toggle
+view.forwarded Key(key='r')
+Key(key='r') >>> MyApp(title='OpShell v1.0')
+ACTION MyApp(title='OpShell v1.0') screener
+view.forwarded Key(key='b')
+Key(key='b') >>> MyApp(title='OpShell v1.0')
+ACTION DockView(name='DockView#1') toggle
+view.forwarded Key(key='h')
+Key(key='h') >>> MyApp(title='OpShell v1.0')
+ACTION DockView(name='DockView#1') toggle
+WindowChange(WindowView(name='WindowView#1')) >>> ScrollView(name='ScrollView#1')
+WindowChange(WindowView(name='WindowView#1')) >>> ScrollView(name='ScrollView#1')
+view.forwarded Key(key='h')
+Key(key='h') >>> MyApp(title='OpShell v1.0')
+ACTION DockView(name='DockView#1') toggle
 view.forwarded Key(key='q')
 Key(key='q') >>> MyApp(title='OpShell v1.0')
 ACTION MyApp(title='OpShell v1.0') quit
 CLOSED MyApp(title='OpShell v1.0')
 PROCESS END
-CLOSED Static(name='Static#2')
-CLOSED DockView(name='DockView#1')
+CLOSED WindowView(name='WindowView#1')
+CLOSED Static(name='Static#3')
+CLOSED ScrollBar(virtual_size=150, window_size=150, position=0)
+CLOSED Static(name='Static#4')
 CLOSED Stock_Prices(name='Stock_Prices#1')
+CLOSED ScrollView(name='ScrollView#1')
+CLOSED DockView(name='DockView#1')
+CLOSED ScrollBar(virtual_size=31, window_size=31, position=0)
 CLOSED MyFooter(keys=[])
 CLOSED Header('OpShell v1.0')
