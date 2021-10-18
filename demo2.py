@@ -1,21 +1,27 @@
-import os
-import sys
+from rich.console import Console
+import time
 
-from rich import print
-from rich.columns import Columns
-from rich.panel import Panel
-from rich.table import Table
+from rich.progress import SpinnerColumn, track
+from rich.align import Align
 
-table = Table(title="Star Wars Movies")
+# create new console object to pretty print
+console = Console()
 
-table.add_column("Released", justify="right", style="cyan", no_wrap=True)
-table.add_column("Title", style="magenta")
-table.add_column("Box Office", justify="right", style="green")
+# print colored splashscreen
+console.print("""
 
-table.add_row("Dec 20, 2019", "Star Wars: The Rise of Skywalker", "$952,110,690")
-table.add_row("May 25, 2018", "Solo: A Star Wars Story", "$393,151,347")
-table.add_row("Dec 15, 2017", "Star Wars Ep. V111: The Last Jedi", "$1,332,539,889")
-table.add_row("Dec 16, 2016", "Rogue One: A Star Wars Story", "$1,332,439,889")
+  ______   .______   [red]  _______. __    __   _______  __       __      [/]
+ /  __  \  |   _  \  [orange4] /       ||  |  |  | |   ____||  |     |  |     [/]
+|  |  |  | |  |_)  | [yellow]|   (----`|  |__|  | |  |__   |  |     |  |     [/]
+|  |  |  | |   ___/  [green] \   \    |   __   | |   __|  |  |     |  |     [/]
+    |  `--'  | |  |   [blue].----)   |   |  |  |  | |  |____ |  `----.|  `----.[/]
+     \______/  | _|   [violet]|_______/    |__|  |__| |_______||_______||_______|[/]
 
-columns = Columns(table, equal=True, expand=True)
-print(columns)
+A [bold]W200[/] Project by [underline]Zachary[/]
+
+""", justify="center")
+
+# some time to appreciate the splash screen
+for i in track(range(1,100)):
+    time.sleep(0.2)
+    pass

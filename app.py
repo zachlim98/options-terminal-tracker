@@ -25,11 +25,11 @@ class Trade:
     """
     Trade objects will hold all the basic variables of an options trade - specifically a Cash-Secured Put.
     The basic variables to create a new trade object are:
-    Open Date: DD MMM YYYY
-    Ticker: AAA or BB
-    Strike Price: 00.00
-    Trade Price: 00.00
-    Expiration Date: DD MMM YYYY
+    @parem: Open Date: DD MMM YYYY
+    @parem: Ticker: AAA or BB
+    @parem: Strike Price: 00.00
+    @parem: Trade Price: 00.00
+    @parem: Expiration Date: DD MMM YYYY
     """
 
     def __init__(self, open_date: str, ticker: str, strike_price : float, trade_price: float, exp_date: str) -> None:
@@ -72,9 +72,9 @@ class Account:
     """
     Main object that will handle all trade and account operations. Trade objects will never be directly accessed
     and must be accessed through an Account object.
-    Deposits: 00.00 (initial monetary deposits)
-    Current Value: 00.00 (initial + PnL)
-    Open Trades: Dict of saved trades
+    @parem: Deposits: 00.00 (initial monetary deposits)
+    @parem: Current Value: 00.00 (initial + PnL)
+    @parem: Open Trades: Dict of saved trades
     """
 
     def __init__(self, deposits: float, curr_value: float, open_trades: dict) -> None:
@@ -161,25 +161,28 @@ class Renderer:
     def __init__(self):
         self.console = Console()
     
-    def last_color(self, text) -> str:
+    def color_text(self, text: str, col_type: str) -> str:
         """
-        Function that colors text based on affordability (i.e. <30)
+        Function that colors text based on various criteria
+        @parem: col_type = ["afford", "dte", "posneg"]
         """
-        if float(text) < 30:
-            return f"[bright_green]{str(text)}[/]"
-        elif float(text) > 30 and float(text) < 50:
-            return f"[orange1]{str(text)}[/]"
-        else:
-            return f"[bright_red]{str(text)}[/]"
-
-    def dte_color(self, text) -> str:
-        """
-        Function that colors text based on how soon the option expires (<= 21)
-        """
-        if float(text) <= 21:
-            return f"[bright_red]{str(text)}[/]"
-        else:
-            return f"{str(text)}"
+        if col_type == "afford":
+            if float(text) < 30:
+                return f"[bright_green]{str(text)}[/]"
+            elif float(text) > 30 and float(text) < 50:
+                return f"[orange1]{str(text)}[/]"
+            else:
+                return f"[bright_red]{str(text)}[/]"
+        elif col_type == "dte":
+            if float(text) <= 21:
+                return f"[bright_red]{str(text)}[/]"
+            else:
+                return f"{str(text)}"
+        elif col_type == "posneg":
+            if float(text) < 0:
+                return f"[bright_red]{str(text)}[/]"
+            else:
+                return f"[bright_green]{str(text)}[/]"
 
     def screener_table(self, data, table_type="ETF") -> Table:
         """
@@ -192,7 +195,7 @@ class Renderer:
             table.add_column(col_name[i])
 
         for i in range(0,11):
-            table.add_row(data[i][0], self.last_color(data[i][1]),data[i][2],data[i][3],data[i][4])
+            table.add_row(data[i][0], self.color_text(data[i][1], "afford"),data[i][2],data[i][3],data[i][4])
 
         return table
 
@@ -207,8 +210,24 @@ class Renderer:
             table.add_column(col_name[i])
         
         for i in range(len(data)):
-            table.add_row(data[i][0], data[i][1], data[i][2], data[i][3], self.dte_color(data[i][4]))
+            table.add_row(data[i][0], data[i][1], data[i][2], data[i][3], self.color_text(data[i][4], "dte"))
         
+        return table
+
+    def gain_loss_table(self, data) -> Table:
+        """
+        Function that returns a table object from gainers and losers
+        """
+
+        table = Table(title=f"Losers and Gainers")
+        col_name = ["Losers", "% Change", "Gainers", "% Change"]
+
+        for i in range(len(col_name)):
+            table.add_column(col_name[i])
+
+        for i in range(len(data)):
+            table.add_row(data[i][0], self.color_text(data[i][1], "posneg"), data[i][2], self.color_text(data[i][3], "posneg"))
+
         return table
 
 class Prompts():
@@ -276,7 +295,9 @@ class Prompts():
                     account.close_trade(trdname, float(fieldValues[0]))
 
 class MyFooter(Footer):
-
+    """
+    Child class of parent class Footer to customize the style of the footer
+    """
     def __init__(self) -> None:
         super().__init__()
 
@@ -305,26 +326,64 @@ class MyFooter(Footer):
         return text
 
 class Stock_Prices(Widget):
+
+    def __init__(self, data, name = None) -> None:
+        super().__init__(name=name)
+        self.tg = data[2].loc[0:4]
+        self.tl = data[3].loc[0:4]
+
     def on_mount(self):
-        self.set_interval(1, self.refresh)
+        self.set_interval(60, self.refresh)        
 
     def render(self):
+        
+        new_render = Renderer()
+        
+        #prepare top gainers and losers for render
+        data_tgtl = list(zip(self.tl.loc[:,"Symbol"], self.tl.loc[:, "% Change"], self.tg.loc[:,"Symbol"], self.tg.loc[:, "% Change"]))
 
-        SPY_data = "SPY: " + str(round(si.get_live_price("SPY"), 2))
         layout = Layout()
-        layout.size = 10
         layout.split_row(
             Layout(name="left"),
-            Layout(Panel(Align.center(SPY_data, vertical="middle")), name="middle"),
-            Layout(name="right")
+            Layout(name="middle"),
+            Layout(Panel(Align.center(new_render.gain_loss_table(data_tgtl), vertical="middle")))
         )
         return layout
 
 class MyApp(App):
-    """An example of a very simple Textual App"""
+    """
+    Main app class to display all the elements through render and to allow for 
+    user interaction through prompts. Child class from textual app class
+    """
 
     async def on_load(self, event: events.Load) -> None:
-        """Bind keys with the app loads (but before entering application mode)"""
+
+        # create new console object to pretty print
+        console = Console()
+
+        # print colored splashscreen
+        console.print("""
+
+        ______   .______   [red]  _______. __    __   _______  __       __      [/]
+        /  __  \  |   _  \  [orange4] /       ||  |  |  | |   ____||  |     |  |     [/]
+        |  |  |  | |  |_)  | [yellow]|   (----`|  |__|  | |  |__   |  |     |  |     [/]
+        |  |  |  | |   ___/  [green] \   \    |   __   | |   __|  |  |     |  |     [/]
+            |  `--'  | |  |   [blue].----)   |   |  |  |  | |  |____ |  `----.|  `----.[/]
+            \______/  | _|   [violet]|_______/    |__|  |__| |_______||_______||_______|[/]
+
+        A [bold]W200[/] Project by [underline]Zachary[/]
+
+        """, justify="center")
+
+        # Load stock data
+        load_list = [si.get_futures, si.get_market_status, si.get_day_gainers, si.get_day_losers]
+
+        self.data_list = []
+
+        for i in track(range(len(load_list)),description="Loading data"):
+            self.data_list.append(load_list[i]())
+
+        """Bind keys with the app load"""
         await self.bind("b", "view.toggle('screener')", "Toggle screener")
         await self.bind("q", "quit", "Quit")
         await self.bind("i", "item", "New Trade")
@@ -360,10 +419,12 @@ class MyApp(App):
         await self.view.dock(self.screener, edge="left", size=60, name="screener")
 
         # Dock the remaining views in the remaining space
-        await self.view.dock(Stock_Prices(), self.trades_table,  edge="top")
+        await self.view.dock(Stock_Prices(self.data_list), self.trades_table,  edge="top")
 
     async def action_item(self) -> None:
-
+        """
+        async function to add trades and update render table
+        """
         Prompts.open_trade(self.account)
 
         new_render = Renderer()
@@ -375,6 +436,9 @@ class MyApp(App):
         title="Full Report", border_style="red"))
 
     async def action_edit(self) -> None:
+        """
+        async action function to edit/close trades and update render table
+        """
 
         Prompts.edit_trade(self.account)
 
@@ -387,6 +451,9 @@ class MyApp(App):
         title="Full Report", border_style="red"))
 
     async def action_save(self) -> None:
+        """
+        async action function to save trades
+        """
 
         while True:
             filename = g.enterbox("Choose a file name to save your account")
@@ -402,21 +469,7 @@ class MyApp(App):
                 break
 
 
-console = Console()
+time.sleep(2)
 
-console.print("""
-
-  ______   .______   [red]  _______. __    __   _______  __       __      [/]
- /  __  \  |   _  \  [orange4] /       ||  |  |  | |   ____||  |     |  |     [/]
-|  |  |  | |  |_)  | [yellow]|   (----`|  |__|  | |  |__   |  |     |  |     [/]
-|  |  |  | |   ___/  [green] \   \    |   __   | |   __|  |  |     |  |     [/]
-    |  `--'  | |  |   [blue].----)   |   |  |  |  | |  |____ |  `----.|  `----.[/]
-     \______/  | _|   [violet]|_______/    |__|  |__| |_______||_______||_______|[/]
-
-A [bold]W200[/] Project by [underline]Zachary[/]
-
-""", justify="center")
-
-#time.sleep(3)
-
+# run the main app
 MyApp.run(title="OpShell v1.0", log="textual.log")
