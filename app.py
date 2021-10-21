@@ -6,6 +6,7 @@ import time
 import warnings
 
 import easygui as g
+from rich import progress
 import rich.box
 from rich.align import Align
 from rich.console import Console, Group
@@ -277,7 +278,15 @@ class Prompts:
         If yes account, choose file. Otherwise, create new account and fill in basic info.
         """
         if g.buttonbox(msg="Do you have an account?", choices=["Yes", "No"]) == "Yes":
-            account = Account.load_acc(g.fileopenbox(msg="Please select your account file"))
+            filepath = g.fileopenbox(msg="Please select your account file")
+            if filepath is None:
+                return Prompts.on_load()
+            else:
+                try:
+                    account = Account.load_acc(filepath)
+                except:
+                    g.msgbox("That's an invalid save file. Please try again.")
+                    return Prompts.on_load()
 
         else:
             account_info = g.multenterbox(msg="Please fill in the basic information for your account",
@@ -285,7 +294,11 @@ class Prompts:
             if account_info is None: # we NEED to load an account, so re-open the load function
                 return Prompts.on_load()
             else:
-                account = Account(account_info[0], account_info[1], {})
+                try:
+                    account = Account(float(account_info[0]), float(account_info[1]), {})
+                except:
+                    g.msgbox("You need to enter a number for your account balance!")
+                    return Prompts.on_load()
 
         return account
 
@@ -311,7 +324,9 @@ class Prompts:
         """
         Function that provides the GUI for editing trades in an account
         """
-        trdname = g.choicebox("Pick an item", "ITEM PICKER", choices=list(account.open_trades.keys()))
+        open_trades = list(account.open_trades.keys())
+        open_trades.insert(0, "OPEN TRADES")
+        trdname = g.choicebox("Pick an item", "ITEM PICKER", choices=open_trades)
 
         if trdname not in account.open_trades:
             g.msgbox(msg="Trade not found. Please try again.")
@@ -334,7 +349,36 @@ class Prompts:
                 if (fieldValues is None):
                     pass
                 else:
-                    account.close_trade(trdname, float(fieldValues[0]))
+                    try:
+                        account.close_trade(trdname, float(fieldValues[0]))
+                    except:
+                        g.msgbox("You have entered invalid information. Please try again.")
+
+    @staticmethod
+    def account_save(account) -> None:
+        """
+        Function that allows for management and saving of account
+        """
+
+        if g.ynbox(msg="Account Management", choices=["Change Deposit Amount", "Save Account"]):
+            value = g.enterbox("Update your total deposit amount")
+            try:
+                account.base = float(value)
+            except:
+                g.msgbox("Please enter a number")
+        else:
+            while True:
+                filename = g.enterbox("Choose a file name to save your account")
+
+                if os.path.isfile(filename+".pickle"):
+                    if g.ynbox("File already exists. Overwrite?"):
+                        Account.save_acc(account,filename)
+                        break
+                    else:
+                        continue
+                else:
+                    Account.save_acc(account, filename)
+                    break
 
 class MyFooter(Footer):
     """
@@ -396,9 +440,9 @@ class Stock_Prices(Widget):
         """
 
         acc_formatted = f"""
-        [bold]Total value[/]: {self.account.value}  
+        [bold]Total value[/]: {round(self.account.value,2)}  
         [bold]Deposit amt[/]: {self.account.base}
-        [bold]P&L[/]: """ + new_render.mkt_text_render(str(float(self.account.value) - float(self.account.base))) + f"""
+        [bold]P&L[/]: """ + new_render.mkt_text_render(str(round(float(self.account.value) - float(self.account.base), 2))) + f"""
         [bold]P&L % [/]: """ + new_render.mkt_text_render(str(round((float(self.account.value) - float(self.account.base))/float(self.account.base) * 100, 2))) 
 
         layout = Layout()
@@ -448,7 +492,7 @@ class MyApp(App):
         await self.bind("e", "edit", "Roll/Close Trade")
         await self.bind("b", "view.toggle('screener')", "Screener")
         await self.bind("r", "screener", "Run ETF Screener")
-        await self.bind("s", "save", "Save Account")
+        await self.bind("s", "save", "Account")
         await self.bind("q", "quit", "Quit")
         await self.bind("h", "view.toggle('help')", "Help")
 
@@ -493,7 +537,7 @@ class MyApp(App):
                 readme = Markdown(fh.read(), hyperlinks=True)
             await self.help.update(readme)
 
-        await self.call_later(get_markdown, "README.md")
+        await self.call_later(get_markdown, "help.md")
 
     async def action_item(self) -> None:
         """
@@ -513,8 +557,10 @@ class MyApp(App):
         """
         async action function to edit/close trades and update render table
         """
-
-        Prompts.edit_trade(self.account)
+        if len(self.account.open_trades.keys()) < 1:
+            g.msgbox("You have no open trades to edit")
+        else:
+            Prompts.edit_trade(self.account)
 
         new_render = Renderer()
         await self.trades_table.update(
@@ -528,19 +574,7 @@ class MyApp(App):
         """
         async action function to save trades
         """
-
-        while True:
-            filename = g.enterbox("Choose a file name to save your account")
-
-            if os.path.isfile(filename+".pickle"):
-                if g.ynbox("File already exists. Overwrite?"):
-                    Account.save_acc(self.account,filename)
-                    break
-                else:
-                    continue
-            else:
-                Account.save_acc(self.account, filename)
-                break
+        Prompts.account_save(self.account)
 
     async def action_screener(self) -> None:
         if g.ccbox("""
@@ -553,13 +587,6 @@ class MyApp(App):
             await self.screener.update(Static(Panel(Align(table_view, align="center"), box=rich.box.SQUARE, title="Screener", border_style="red")))
         else:
             pass
-
-    async def action_help(self) -> None:
-        g.msgbox("""
-        Welcome to OpShell - the terminal options manager. There are 2 main
-        """)
-
-
 
 #set terminal size for optimal app display
 os.system('resize -s 35 150 >/dev/null')
