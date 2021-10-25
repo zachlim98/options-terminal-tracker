@@ -4,6 +4,8 @@ from textual import events
 from textual.app import App
 from textual.widgets import Header, Footer, Placeholder, ScrollView
 
+import easygui as g
+
 
 class MyApp(App):
     """An example of a very simple Textual App"""
@@ -11,7 +13,7 @@ class MyApp(App):
     async def on_load(self, event: events.Load) -> None:
         """Bind keys with the app loads (but before entering application mode)"""
         await self.bind("b", "view.toggle('sidebar')", "Toggle sidebar")
-        await self.bind("q", "quit", "Quit")
+        await self.bind("q", "freak", "Quit")
 
     async def on_mount(self, event: events.Mount) -> None:
         """Create and dock the widgets."""
@@ -34,5 +36,8 @@ class MyApp(App):
 
         await self.call_later(get_markdown, "README.md")
 
+    async def action_freak(self) -> None:
+        g.msgbox("Shutting down now!")
+        await self.shutdown()
 
 MyApp.run(title="Simple App", log="textual.log")

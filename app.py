@@ -2,7 +2,6 @@ import datetime
 import getpass
 import os
 import pickle
-import time
 import warnings
 
 import easygui as g
@@ -356,6 +355,26 @@ class Prompts:
 
     @staticmethod
     def account_save(account) -> None:
+        while True:
+            filename = g.enterbox("Choose a file name to save your account")
+
+            if filename is None:
+                return False
+            elif filename == "":
+                g.msgbox("Please enter a proper name")
+                continue
+            elif os.path.isfile(filename+".pickle"):
+                if g.ynbox("File already exists. Overwrite?"):
+                    Account.save_acc(account,filename)
+                    break
+                else:
+                    continue
+            else:
+                Account.save_acc(account, filename)
+                break
+
+    @staticmethod
+    def account_manage(account) -> None:
         """
         Function that allows for management and saving of account
         """
@@ -367,18 +386,10 @@ class Prompts:
             except:
                 g.msgbox("Please enter a number")
         else:
-            while True:
-                filename = g.enterbox("Choose a file name to save your account")
+            Prompts.account_save(account)
 
-                if os.path.isfile(filename+".pickle"):
-                    if g.ynbox("File already exists. Overwrite?"):
-                        Account.save_acc(account,filename)
-                        break
-                    else:
-                        continue
-                else:
-                    Account.save_acc(account, filename)
-                    break
+
+
 
 class MyFooter(Footer):
     """
@@ -490,9 +501,9 @@ class MyApp(App):
         """Bind keys with the app load"""
         await self.bind("i", "item", "New Trade")
         await self.bind("e", "edit", "Roll/Close Trade")
-        await self.bind("b", "view.toggle('screener')", "Screener")
+        await self.bind("s", "view.toggle('screener')", "Screener")
         await self.bind("r", "screener", "Run ETF Screener")
-        await self.bind("s", "save", "Account")
+        await self.bind("a", "save", "Account")
         await self.bind("q", "quit", "Quit")
         await self.bind("h", "view.toggle('help')", "Help")
 
@@ -572,9 +583,9 @@ class MyApp(App):
 
     async def action_save(self) -> None:
         """
-        async action function to save trades
+        async action function to manage trades
         """
-        Prompts.account_save(self.account)
+        Prompts.account_manage(self.account)
 
     async def action_screener(self) -> None:
         if g.ccbox("""
@@ -587,6 +598,15 @@ class MyApp(App):
             await self.screener.update(Static(Panel(Align(table_view, align="center"), box=rich.box.SQUARE, title="Screener", border_style="red")))
         else:
             pass
+
+    async def action_quit(self) -> None:
+        if g.ynbox("Save before quitting?"):
+            if Prompts.account_save(self.account) is False:
+                pass
+            else:
+                await self.shutdown()
+        else:
+            await self.shutdown()
 
 #set terminal size for optimal app display
 os.system('resize -s 35 150 >/dev/null')
