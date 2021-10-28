@@ -4020,3 +4020,94 @@ JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1dr
 [GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
 JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 1149 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
 [GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 4260 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 2603 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 5157 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 7804 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 5787 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 4304 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6612 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6826 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 5873 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6725 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 4303 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 7265 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6959 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 4293 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 2055 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 896 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 884 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 983 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 7681 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6163 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 1582 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6208 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 7016 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6032 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 444 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 641 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6993 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 6499 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/rYsSliro57HlqQ0w1drzgXd5CbzCCwb6qdFIuIj2zIs.js line 1 > eval line 1049 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[GFX1-]: Couldn't sanitize RENDERER device: SVGA3D; build: RELEASE;  LLVM;
+JavaScript error: , line 0: uncaught exception: 7
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.

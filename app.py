@@ -2,11 +2,12 @@ import datetime
 import getpass
 import os
 import pickle
+import sys
 import warnings
 
 import easygui as g
-from rich import progress
 import rich.box
+from rich import progress
 from rich.align import Align
 from rich.console import Console, Group
 from rich.layout import Layout
@@ -592,10 +593,13 @@ class MyApp(App):
         Scrapping will take approximately 10s. Please wait for it to complete.
         Click continue to start screening.
         """):
-            new_scrap = Scraper()
-            new_render = Renderer()
-            table_view = new_render.screener_table(new_scrap.etf_scrape())
-            await self.screener.update(Static(Panel(Align(table_view, align="center"), box=rich.box.SQUARE, title="Screener", border_style="red")))
+            try:
+                new_scrap = Scraper()
+                new_render = Renderer()
+                table_view = new_render.screener_table(new_scrap.etf_scrape())
+                await self.screener.update(Static(Panel(Align(table_view, align="center"), box=rich.box.SQUARE, title="Screener", border_style="red")))
+            except:
+                g.msgbox("Server is currently down. Please try again later!")
         else:
             pass
 
@@ -609,7 +613,10 @@ class MyApp(App):
             await self.shutdown()
 
 #set terminal size for optimal app display
-os.system('resize -s 35 150 >/dev/null')
+if sys.platform == "linux":
+    os.system('resize -s 35 150 >/dev/null')
+elif sys.platform.lower() == "windows":
+    os.system('mode con: cols=150 lines=35')
 # to suppress known bug in Selenium when scrapping
 warnings.filterwarnings("ignore")
 # run the main app
